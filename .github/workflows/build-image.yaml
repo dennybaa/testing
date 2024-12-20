@@ -42,4 +42,5 @@ jobs:
 
     steps:
       - run: |
-          echo "${{ matrix.image.tag || matrix.default.tag }}"
+          Context="${{matrix.image.context}}"
+          Context="${Context:-images/${matrix.image.name}}"

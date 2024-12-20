@@ -42,4 +42,4 @@ jobs:
 
     steps:
       - run: |
-          echo "${{ matrix.base.tag or matrix.image.tag }}"
+          echo "${{ matrix.base.tag || matrix.image.tag }}"

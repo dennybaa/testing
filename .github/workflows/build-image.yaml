@@ -6,9 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: images/alpine:latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

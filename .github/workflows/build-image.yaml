@@ -1,0 +1,22 @@
+name: Build Image
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: images/alpine:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Image
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: test
+          context: ./
+          tags: latest

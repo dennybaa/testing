@@ -43,4 +43,5 @@ jobs:
     steps:
       - run: |
           Context="${{matrix.image.context}}"
-          Context="${Context:-images/${matrix.image.name}}"
+          Context="${Context:-images/${{matrix.image.name}}}"
+          echo $Context

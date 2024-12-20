@@ -42,4 +42,4 @@ jobs:
 
     steps:
       - run: |
-          echo "${{ toJSON(matrix) }}"
+          echo "${{ matrix.base.tag or matrix.image.tag }}"

@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        base:
+        default:
         - registry: europe-west4-docker.pkg.dev
           image: iaas-383414/iaas
           containerfile: containerfile
@@ -42,4 +42,4 @@ jobs:
 
     steps:
       - run: |
-          echo "${{ matrix.base.tag || matrix.image.tag }}"
+          echo "${{ matrix.image.tag || matrix.default.tag }}"

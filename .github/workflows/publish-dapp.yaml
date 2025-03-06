@@ -1,0 +1,31 @@
+name: Publish DApp
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: Environment to deploy DApp
+        required: true
+        type: choice
+        options:
+        - dev
+        - prod
+
+      data:
+        description: DApp compressed data (base64 encoded tar.gz)
+        required: true
+        type: string
+
+  # push:
+  #   branches:
+  #     - dennybaa/testing
+
+jobs:
+  publish:
+    runs-on: small
+    container:
+      image: p2p/gitops:latest
+
+    steps:
+      - name: test
+        run: |
+          echo ${toJSON(inputs)}}

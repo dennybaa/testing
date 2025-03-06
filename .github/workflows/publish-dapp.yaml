@@ -21,12 +21,9 @@ on:
 
 jobs:
   publish:
-    runs-on: small
-    container:
-      image: p2p/gitops:latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: test
         run: |
-          echo "Where am I run?"
           echo ${toJSON(inputs)}}

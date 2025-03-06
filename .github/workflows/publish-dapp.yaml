@@ -2,18 +2,28 @@ name: Publish DApp
 on:
   workflow_dispatch:
     inputs:
-      env:
-        description: Environment to deploy DApp
+      name:
+        description: DApp name
+        type: string
+        required: true
+
+      mode:
+        description: Artifacts mode single/multiple
         required: true
         type: choice
         options:
-        - dev
-        - prod
+        - single
+        - multiple
 
-      data:
-        description: DApp compressed data (base64 encoded tar.gz)
+      dist:
+        description: DApp dist Acrhive (base64 encoded compressed tar.gz)
         required: true
         type: string
+
+      ref:
+        description: Caller ref
+        type: string
+        required: true
 
   # push:
   #   branches:
@@ -21,11 +31,12 @@ on:
 
 jobs:
   publish:
-    runs-on: small
-    container:
-      image: p2p/gitops:latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: test
         run: |
-          echo ${toJSON(inputs)}}
+          echo "Where am I run?"
+          echo "--------------------"
+          echo "${{ toJSON(github) }}"
+          echo

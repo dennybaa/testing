@@ -10,4 +10,5 @@ jobs:
     steps:
       - name: Hello 
         run: |
-          echo '${{ toJSON(github) }}'
+          tag="${{ github.event.tag_name }}"; widget="${tag#v*-}";
+          echo ${widget}

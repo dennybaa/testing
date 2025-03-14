@@ -1,7 +1,7 @@
 name: Publish DApp
 on:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   test:
@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Hello 
         run: |
-          tag="${{ github.event.tag_name }}"; widget="${tag#v*-}";
+          tag="${{ github.event.release.tag_name }}"; widget="${tag#v*-}";
           echo ${widget}

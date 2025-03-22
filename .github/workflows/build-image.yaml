@@ -5,43 +5,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        default:
-        - registry: europe-west4-docker.pkg.dev
-          image: iaas-383414/iaas
-          containerfile: containerfile
-          tag: latest
-
-        image:
-        - name: supercronic
-
-        - name: alpine
-          path: images/actions-runner/alpine
-
-        - name: autotests
-          context: images/actions-runner/autotests
-
-        - name: gitops
-          context: images/actions-runner/gitops
-
-        - name: node22
-          context: images/actions-runner/node22
-
-        - name: ubuntu22
-          context: images/actions-runner/ubuntu22
-
-        - name: ubuntu24
-          context: images/actions-runner/ubuntu24
-
-        - name: gcproxy
-          tag: v0.4.2
-          args: |
-            VERSION=0.4.2
-
     steps:
-      - run: |
-          Context="${{matrix.image.context}}"
-          Context="${Context:-images/${{matrix.image.name}}}"
-          echo $Context
+    - uses: actions/checkout@v4
+
+    - name: Buildah Action
+      uses: redhat-actions/buildah-build@v2
+      with:
+        tags: |
+          foo:v1 foo:latest
+          bar:v1 bar:latest
+
+        containerfiles: |
+          ./images/Containerfile.foo
+          ./images/Containerfile.bar

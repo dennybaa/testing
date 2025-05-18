@@ -5,6 +5,11 @@ on:
     branches:
       - "*"
   workflow_dispatch:
+    inputs:
+      message:
+        description: 'Message'
+        required: false
+        type: string
 
 jobs:
   test:

@@ -7,7 +7,7 @@ on:
 
   workflow_dispatch:
     inputs:
-      message:
+      text:
         description: 'Message'
         required: false
         type: string
@@ -19,4 +19,4 @@ jobs:
     - name: test
       run: |-
         echo '--------------------'
-        echo ${{ inputs.message }}
+        echo ${{ inputs.text }}

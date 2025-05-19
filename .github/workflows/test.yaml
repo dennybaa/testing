@@ -16,6 +16,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - name: fail
+      run: |
+        false
+
     - name: test
       run: |-
         echo '--------------------'

@@ -1,0 +1,18 @@
+# Defult settings for workflow dispatch (merged as base)
+default:
+  dispatch:
+    workflow: test-pr.yaml
+    inputs:
+      client: hello
+      feature: pr
+
+    match:
+      type: pull_request
+      pull_request:
+        title_regex: '^ci\({{featue}} {{client}}\):'
+
+
+# Dispatch repository list
+dispatch:
+  - repository: dennybaa/ghbar
+  - repository: dennybaa/ghfoo

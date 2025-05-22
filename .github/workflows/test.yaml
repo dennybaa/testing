@@ -31,6 +31,5 @@ jobs:
         run: |-
           source ${{ github.workspace }}/nu_scripts/scripts/env/setup.nu
 
-          print $env.NU_LIB_DIRS
-          #use gh
-          #gh core notice 'Something to notice'
+          use gh
+          gh core notice 'Something to notice'

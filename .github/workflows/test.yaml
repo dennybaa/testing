@@ -5,22 +5,24 @@ on:
     branches:
       - "*"
 
-  workflow_dispatch:
-    inputs:
-      text:
-        description: 'Message'
-        required: false
-        type: string
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: fail
-      run: |
-        false
+      - uses: actions/checkout@v4
 
-    - name: test
-      run: |-
-        echo '--------------------'
-        echo ${{ inputs.text }}
+      - name: Checkout Nu modules
+        uses: actions/checkout@v4
+        with:
+          repository: bitdeps/nu_scripts
+          path: nu_scripts
+      - uses: hustcer/setup-nu@main
+
+      - name: test
+        shell: nu {0}
+        run: |-
+          const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]
+
+          use gh
+          gh workflow list --repo
+          echo ${{ inputs.text }}

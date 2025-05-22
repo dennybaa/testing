@@ -3,9 +3,7 @@ name: test-pr
 on:
   pull_request:
     types: [edited]
-    branches:
-      - main
-
+    branches: []
 
 jobs:
   test:

@@ -27,9 +27,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.MYPAT }}
           NU_LOG_LEVEL: error
+          NU_MODULE_DIRS: ${{ github.workspace }}/nu_scripts/modules
+          SCRIPTS_DIR: ${{ github.workspace }}/nu_scripts/scripts
 
         run: |-
-          const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]
+          source $env.SCRIPTS_DIR/env/setup.nu
           use gh
-
           gh core notice 'Something to notice'

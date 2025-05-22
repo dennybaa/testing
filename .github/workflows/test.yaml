@@ -24,6 +24,9 @@ jobs:
       - name: test
         shell: nu {0}
         working-directory: code
+        env:
+          GITHUB_TOKEN: ${{ secrets.MYPAT }}
+
         run: |-
           const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]
 

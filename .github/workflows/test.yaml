@@ -31,7 +31,7 @@ jobs:
 
         run: |-
           const scripts_dir = '${{ github.workspace }}/nu_scripts/scripts'
-          source $'($scripts_dir)/env/setup.nu'
+          source-env $'($scripts_dir)/env/setup.nu'
 
           print $env.NU_MODULE_DIRS
           print $env.NU_LIB_DIRS

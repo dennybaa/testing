@@ -31,7 +31,7 @@ jobs:
 
         run: |-
           const scripts_dir = '${{ github.workspace }}/nu_scripts/scripts'
-          source-env $'($scripts_dir)/env/setup.nu'
+          source $'($scripts_dir)/env/setup.nu'; setup-lib-dirs
 
           use gh
           gh core notice 'Something to notice'

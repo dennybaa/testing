@@ -31,7 +31,7 @@ jobs:
 
         run: |-
           const scripts_dir = '${{ github.workspace }}/nu_scripts/scripts'
-          source $'setup-lib-dirs/env/setup.nu'; setup-lib-dirs
+          source $'${{ github.workspace }}/nu_scripts/scripts/env/setup.nu'; setup-lib-dirs
 
           print $env.NU_LIB_DIRS
           #use gh

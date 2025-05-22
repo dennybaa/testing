@@ -24,14 +24,13 @@ jobs:
       - name: test
         shell: nu {0}
         working-directory: code
+        with:
+          github-token: ${{ secrets.MYPAT }}
         env:
-          GITHUB_TOKEN: ${{ secrets.MYPAT }}
           NU_LOG_LEVEL: error
           NU_MODULE_DIRS: ${{ github.workspace }}/nu_scripts/modules
-
         run: |-
-          const scripts_dir = '${{ github.workspace }}/nu_scripts/scripts'
-          source $'${{ github.workspace }}/nu_scripts/scripts/env/setup.nu'; setup-lib-dirs
+          source ${{ github.workspace }}/nu_scripts/scripts/env/setup.nu
 
           print $env.NU_LIB_DIRS
           #use gh

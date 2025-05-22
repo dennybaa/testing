@@ -29,4 +29,7 @@ jobs:
 
           use gh
           ^find | grep -v \.git
+
+          print $env.GITHUB_TOKEN?
+          print '------------'
           gh workflow list | to yaml

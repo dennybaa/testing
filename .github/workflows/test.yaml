@@ -16,6 +16,7 @@ jobs:
         with:
           repository: bitdeps/nu_scripts
           path: nu_scripts
+
       - uses: hustcer/setup-nu@main
 
       - name: test
@@ -24,5 +25,5 @@ jobs:
           const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]
 
           use gh
+          ^find | grep -v \.git
           gh workflow list
-          echo ${{ inputs.text }}

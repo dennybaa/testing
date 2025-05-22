@@ -26,6 +26,7 @@ jobs:
         working-directory: code
         env:
           GITHUB_TOKEN: ${{ secrets.MYPAT }}
+          NU_LOG_LEVEL: error
 
         run: |-
           const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]

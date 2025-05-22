@@ -24,9 +24,8 @@ jobs:
       - name: test
         shell: nu {0}
         working-directory: code
-        with:
-          github-token: ${{ secrets.MYPAT }}
         env:
+          GITHUB_TOKEN: ${{ secrets.MYPAT }}
           NU_LOG_LEVEL: error
           NU_MODULE_DIRS: ${{ github.workspace }}/nu_scripts/modules
         run: |-

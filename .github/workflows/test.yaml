@@ -22,9 +22,7 @@ jobs:
       - uses: hustcer/setup-nu@main
 
       - name: prepare-env
-        shell: nu {0}
+        shell: nu -I ${{ github.workspace }}/nu -c '{0}'
         run: |-
-          const modules = '${{ github.workspace }}/nu/modules'
-
-          use $'($modules)/gh'
+          use gh
           gh core notice 'Something to notice'

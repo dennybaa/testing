@@ -24,5 +24,5 @@ jobs:
           const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]
 
           use gh
-          gh workflow list --repo
+          gh workflow list
           echo ${{ inputs.text }}

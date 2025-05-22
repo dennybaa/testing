@@ -33,5 +33,8 @@ jobs:
           const scripts_dir = '${{ github.workspace }}/nu_scripts/scripts'
           source $'($scripts_dir)/env/setup.nu'
 
+          print $env.NU_MODULE_DIRS
+          print $env.NU_LIB_DIRS
+          print Thanks
           # use gh
           # gh core notice 'Something to notice'

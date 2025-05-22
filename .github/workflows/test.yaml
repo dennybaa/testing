@@ -30,10 +30,6 @@ jobs:
 
         run: |-
           const NU_LIB_DIRS = [ ${{ github.workspace }}/nu_scripts/modules ]
-
           use gh
-          ^find | grep -v \.git
 
-          print $env.GITHUB_TOKEN?
-          print '------------'
-          gh workflow list | to yaml
+          gh core notice 'Something to notice'

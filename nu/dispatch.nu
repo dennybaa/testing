@@ -22,8 +22,9 @@ def dispatch_loop [] {
         let workflow = $config.default.workflow? | default {} | merge $workflow
         
         dispatch $rule.repository $workflow
-          | if ($in.error.message? | is-not-empty) {
-                gh core error $"($in.error.message) \(dispatch failed ($workflow.name)@($rule.repository))"
+          | if ($in.error? | is-not-empty) {
+                let err = if ($in.error.message? | is-not-empty) { $in.error.message } else { $in.error | to text }
+                gh core error $"($err) \(dispatch failed ($workflow.name)@($rule.repository))"
                 $failed = true
             }
     }

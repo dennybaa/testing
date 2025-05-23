@@ -1,6 +1,7 @@
 use std/log
 use gh
 source common/git.nu
+source common/env.nu
 
 def dispatch [
     repository: string  # workflow dispatch repository
@@ -27,5 +28,5 @@ def main [] {
     # dispatch_loop
 
     print '----------------------'
-    gh core getInput caller-repo | print
+    get-env _caller_repo | print
 }

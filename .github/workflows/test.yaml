@@ -24,7 +24,9 @@ jobs:
       - name: prepare-env
         env:
           NU_MODULE_DIRS: nu/modules
+          GITHUB_TOKEN: ${{ secrets.MYPAT }}
 
         shell: nu -c "source nu/scripts/env/common.nu; exec nu -I (nu-include-dirs) {0}" 
         run: |-
+          use gh
           gh workflow list --repo=dennybaa/testing

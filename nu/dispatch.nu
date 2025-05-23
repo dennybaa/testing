@@ -9,7 +9,7 @@ def dispatch [
     workflow: record    # workflow dispatch config
 ] {
     log debug $"=> dispatch repository: ($repository), workflow: ($workflow.name)"
-    gh workflow get-dispatched $workflow.name --repo=$repository --inputs=$workflow.inputs
+    gh workflow run get-dispatched $workflow.name --repo=$repository --inputs=$workflow.inputs
 }
 
 def dispatch_loop [] {

@@ -17,16 +17,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: bitdeps/nu_scripts
-          path: nu
+          path: nu_scripts
 
       - uses: hustcer/setup-nu@main
 
       - name: prepare-env
         env:
-          NU_MODULE_DIRS: nu/modules
+          NU_MODULE_DIRS: nu_scripts/modules
           GITHUB_TOKEN: ${{ secrets.MYPAT }}
 
-        shell: nu -c "source nu/scripts/env/common.nu; exec nu -I (nu-include-dirs) {0}"
+        shell: nu {0}
         run: |-
-          ^env
-          $nu
+          source nu_scripts/scripts/env/common.nu; alias nu = nu -I (nu-include-dirs)
+          exec nu code/nu/dispatch.nu

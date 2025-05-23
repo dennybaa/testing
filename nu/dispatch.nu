@@ -16,12 +16,17 @@ def dispatch_loop [] {
     let config = open $'(git_root)/.github/.dispatch.yaml'
 
     # loop over the disptach list
+    mut falied = false
     for rule in $config.dispatch {
         let workflow = $rule | reject repository | default {}
         let default = $config.default.workflow? | default {}
 
-        dispatch $rule.repository ($default | merge $workflow)
+        dispatch $rule.repository ($default | merge $workflow) |
+          if $in.error? | is-not-empty {
+            gh core error ($in.error | to text); $failed = true
+          }
     }
+    if $failed { gh core setFailed "Dispatch loop has failed!" }
 }
 
 def main [] {

@@ -2,7 +2,7 @@ default:
   workflow:
     name: test-pr.yaml
     inputs:
-      client: my-default
+      client-id: my-default
 
 match_ref:
   on: pull_request
@@ -13,8 +13,8 @@ match_ref:
 
 dispatch:
   - repository: dennybaa/ghbar
-    inputs:
-      run-hook: 'echo Hello World!'
+    # inputs:
+    #   run-hook: 'echo Hello World!'
 
   - repository: dennybaa/ghfoo
   - repository: dennybaa/testing

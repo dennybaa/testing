@@ -28,5 +28,5 @@ def main [] {
     # dispatch_loop
 
     print '----------------------'
-    get-env _caller_repo | print
+    get-env github-repository | print
 }

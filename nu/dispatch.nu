@@ -19,15 +19,15 @@ def dispatch_loop [] {
     mut failed = false
     for rule in $config.dispatch {
         let workflow = $rule | reject repository | default {}
-        let default = $config.default.workflow? | default {}
+        let workflow = $config.default.workflow? | default {} | merge $workflow
         
-        dispatch $rule.repository ($default | merge $workflow)
-          | if ($in.error? | is-not-empty) {
-                gh core error ($in.error  | to text)
+        dispatch $rule.repository $
+          | if ($in.error.message? | is-not-empty) {
+                gh core error $"Failed to dispatch ($workflow.name)@($rule.registry)"
                 $failed = true
             }
     }
-    if $failed { gh core setFailed "Dispatch loop has failed!" }
+    if $failed { exit 1 }
 }
 
 def main [] {

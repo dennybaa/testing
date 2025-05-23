@@ -23,6 +23,7 @@ def dispatch_loop [] {
         
         dispatch $rule.repository $workflow
           | if ($in.error.message? | is-not-empty) {
+                print ($in | to yaml)
                 gh core error $"Failed to dispatch ($workflow.name)@($rule.repository)"
                 $failed = true
             }

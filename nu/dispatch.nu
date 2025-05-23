@@ -21,7 +21,7 @@ def dispatch_loop [] {
         let workflow = $rule | reject repository | default {}
         let workflow = $config.default.workflow? | default {} | merge $workflow
         
-        dispatch $rule.repository $
+        dispatch $rule.repository $workflow
           | if ($in.error.message? | is-not-empty) {
                 gh core error $"Failed to dispatch ($workflow.name)@($rule.registry)"
                 $failed = true

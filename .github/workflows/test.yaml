@@ -22,9 +22,9 @@ jobs:
       - uses: hustcer/setup-nu@main
 
       - name: prepare-env
-        shell: bash -c "ls -l $NU_MODULE_DIRS; echo {0}" 
         env:
           NU_MODULE_DIRS: nu/modules
-        run: |
-          source ${{ github.workspace }}/nu/scripts/env/setup.nu
-          exec nu -I (include-dirs) code/nu/dispatch.nu
+
+        shell: nu -c "source nu/scripts/env/common.nu; exec nu -I (nu-include-sirs) {0}" 
+        run: |-
+          gh worflow list --repo=dennybaa/testing

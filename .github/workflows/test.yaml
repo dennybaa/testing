@@ -27,4 +27,4 @@ jobs:
 
         shell: nu -c "source nu/scripts/env/common.nu; exec nu -I (nu-include-dirs) {0}" 
         run: |-
-          gh worflow list --repo=dennybaa/testing
+          gh workflow list --repo=dennybaa/testing

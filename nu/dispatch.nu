@@ -16,7 +16,7 @@ def dispatch_loop [] {
     let config = open $'(git_root)/.github/.dispatch.yaml'
 
     # loop over the disptach list
-    mut falied = false
+    mut failed = false
     for rule in $config.dispatch {
         let workflow = $rule | reject repository | default {}
         let default = $config.default.workflow? | default {}

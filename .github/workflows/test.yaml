@@ -28,5 +28,6 @@ jobs:
 
         shell: nu {0}
         run: |-
-          source nu_scripts/scripts/env/common.nu; alias nu = nu -I (nu-include-dirs)
-          exec nu code/nu/dispatch.nu
+          ^pwd
+          #source nu_scripts/scripts/env/common.nu; alias nu = nu -I (nu-include-dirs)
+          #exec nu code/nu/dispatch.nu

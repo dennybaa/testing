@@ -26,5 +26,6 @@ def dispatch_loop [] {
 def main [] {
     # dispatch_loop
 
-    gh core getInput caller-repo
+    print '----------------------'
+    gh core getInput caller-repo | print
 }

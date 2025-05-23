@@ -22,8 +22,8 @@ def dispatch_loop [] {
         let default = $config.default.workflow? | default {}
         
         dispatch $rule.repository ($default | merge $workflow)
-          | if ($result.error? | is-not-empty) {
-                gh core error ($result.error  | to text)
+          | if ($in.error? | is-not-empty) {
+                gh core error ($in.error  | to text)
                 $failed = true
             }
     }

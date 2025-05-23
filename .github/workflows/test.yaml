@@ -25,6 +25,6 @@ jobs:
         env:
           NU_MODULE_DIRS: nu/modules
 
-        shell: nu -c "source nu/scripts/env/common.nu; exec nu -I (nu-include-sirs) {0}" 
+        shell: nu -c "source nu/scripts/env/common.nu; exec nu -I (nu-include-dirs) {0}" 
         run: |-
           gh worflow list --repo=dennybaa/testing

@@ -22,7 +22,9 @@ jobs:
       - uses: hustcer/setup-nu@main
 
       - name: prepare-env
-        shell: nu -I ${{ github.workspace }}/nu -c '{0}'
-        run: |-
-          use gh
-          gh core notice 'Something to notice'
+        shell: bash -c 'ls -l $NU_MODULES_DIR'
+        env:
+          NU_MODULE_DIRS: nu/modules
+        run: |
+          source ${{ github.workspace }}/nu/scripts/env/setup.nu
+          exec nu -I (include-dirs) code/nu/dispatch.nu

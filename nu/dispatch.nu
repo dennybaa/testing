@@ -1,4 +1,30 @@
+use std/log
 use gh
 source common/git.nu
 
-git_root
+def dispatch [
+    repository: string  # workflow dispatch repository
+    workflow: record    # workflow dispatch config
+] {
+    log debug $"=> dispatch repository: ($repository), workflow: ($workflow.name)"
+}
+
+
+def dispatch_loop [] {
+    let config = open $'(git_root)/.github/.dispatch.yaml'
+
+    # loop over the disptach list
+    for rule in $config.dispatch {
+        let workflow = $rule | reject repository | default {}
+        let default = $config.default.workflow? | default {}
+
+        dispatch $rule.repository ($default | merge $workflow)
+    }
+}
+
+
+def main [] {
+    # dispatch_loop
+
+    gh core getInput caller-repo
+}

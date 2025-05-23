@@ -1,9 +1,16 @@
 name: test
 
 on:
-  push:
-    branches:
-      - "*"
+  workflow_dispatch:
+    inputs:
+      caller-repo:
+        description: Repo dispatching the workflow
+        required: false
+        type: string
+
+  # push:
+  #   branches:
+  #     - "*"
 
 jobs:
   test:

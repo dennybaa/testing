@@ -17,4 +17,4 @@ dispatch:
     #   run-hook: 'echo Hello World!'
 
   - repository: dennybaa/ghfoo
-  - repository: dennybaa/testing
+  # - repository: dennybaa/testing

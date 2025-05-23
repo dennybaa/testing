@@ -22,7 +22,7 @@ jobs:
       - uses: hustcer/setup-nu@main
 
       - name: prepare-env
-        shell: bash -c 'ls -l $NU_MODULES_DIR; echo $1' {0}
+        shell: bash -c 'echo "$NU_MODULE_DIRS"; echo $0' {0}
         env:
           NU_MODULE_DIRS: nu/modules
         run: |

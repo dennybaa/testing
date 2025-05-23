@@ -23,7 +23,9 @@ jobs:
 
       - name: prepare-env
         env:
-          NU_MODULE_DIRS: ${{ github.workspace }}/nu_scripts/modules
+          NU_MODULE_DIRS: |-
+            ${{ github.workspace }}/nu_scripts/modules;
+            ${{ github.workspace }}/nu_scripts/scripts
           GITHUB_TOKEN: ${{ secrets.MYPAT }}
 
         shell: nu {0}

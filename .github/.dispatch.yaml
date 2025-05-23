@@ -1,0 +1,20 @@
+default:
+  workflow:
+    name: test-pr.yaml
+    inputs:
+      client-id: my-default
+
+match_ref:
+  on: pull_request
+  pull_request:
+    title:
+      regex: '^ci\((?P<feature>[^ )]+)\s*(?P<client>[^ )]+)?\):'
+      inputs: true
+
+dispatch:
+  - repository: dennybaa/ghbar
+    # inputs:
+    #   run-hook: 'echo Hello World!'
+
+  - repository: dennybaa/ghfoo
+  # - repository: dennybaa/testing

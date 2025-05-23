@@ -3,13 +3,14 @@ use gh
 source common/git.nu
 source common/env.nu
 
+
 def dispatch [
     repository: string  # workflow dispatch repository
     workflow: record    # workflow dispatch config
 ] {
     log debug $"=> dispatch repository: ($repository), workflow: ($workflow.name)"
+    gh workflow get-dispatched $workflow.name --repo=$repository --inputs=$workflow.inputs
 }
-
 
 def dispatch_loop [] {
     let config = open $'(git_root)/.github/.dispatch.yaml'
@@ -23,10 +24,6 @@ def dispatch_loop [] {
     }
 }
 
-
 def main [] {
-    # dispatch_loop
-
-    print '----------------------'
-    get-env github_repository | print
+    dispatch_loop
 }

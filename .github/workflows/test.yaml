@@ -28,5 +28,6 @@ jobs:
 
         shell: nu {0}
         run: |-
-          source ${{ github.workspace }}/nu_scripts/modules/common/env.nu; alias nu = nu -I (nu-include-dirs)
+          source ${{ github.workspace }}/nu_scripts/modules/common/env.nu
+          alias nu = nu -I (nu-include-dirs)
           nu code/nu/dispatch.nu

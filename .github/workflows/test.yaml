@@ -29,6 +29,6 @@ jobs:
             ${{ github.workspace }}/nu/scripts
         shell: nu {0}
         run: |
-          const workspace='${{ github.workspace }}'
+          const workspace = '${{ github.workspace }}'
           source $"($workspace)/nu/scripts/common/env.nu"
           cd code; nu -I (nu-include-dirs) $"($workspace)/nu/scripts/github/dispatch.nu"

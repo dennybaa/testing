@@ -11,7 +11,8 @@ jobs:
       
       - name: Checkout Code
         uses: actions/checkout@v4
-        with: { path: code }
+        with:
+          path: code
 
       - name: Checkout Nu Modules
         uses: actions/checkout@v4
@@ -28,6 +29,6 @@ jobs:
             ${{ github.workspace }}/nu/scripts
         shell: nu {0}
         run: |
-          source ${{ github.workspace }}/nu/scripts/common/env.nu
-          cd code/
-          nu -I (nu-include-dirs) ./scripts/github/dispatch.nu
+          const workspace=${{ github.workspace }}
+          source $"($workspace)/nu/scripts/common/env.nu"
+          cd code; nu -I (nu-include-dirs) $"($workspace)/nu/scripts/github/dispatch.nu"

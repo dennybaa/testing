@@ -9,7 +9,7 @@ default:
     match:
       type: pull_request
       pull_request:
-        title_regex: '^ci\({{featue}} {{client}}\):'
+        title_regex: '^ci\({{feature}} {{client}}\):'
 
 
 # Dispatch repository list

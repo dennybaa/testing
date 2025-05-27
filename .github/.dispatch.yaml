@@ -3,7 +3,7 @@ default:
   dispatch:
     workflow: test-pr.yaml
     inputs:
-      client: hello
+      client: test-client
       feature: pr
 
     match:

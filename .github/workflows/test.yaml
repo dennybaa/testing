@@ -33,6 +33,8 @@ jobs:
           source $"($workspace)/nu/scripts/common/env.nu"
           
           print '-------------------------'
+          print ($env.NU_MODULE_DIRS)
+          print '---'
           print (nu-include-dirs | to text)
           print '+++'
           print $workspace

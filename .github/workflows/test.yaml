@@ -32,10 +32,11 @@ jobs:
           const workspace = '${{ github.workspace }}'
           source $"($workspace)/nu/scripts/common/env.nu"
           
+          print ($env | to text)
           print '-------------------------'
           print ($env.NU_MODULE_DIRS)
           print '---'
-          print (nu-include-dirs)
+          print (nu-include-dirs | describe)
           print '+++'
           print $workspace
           #cd code; nu -I (nu-include-dirs) $"($workspace)/nu/scripts/github/dispatch.nu"

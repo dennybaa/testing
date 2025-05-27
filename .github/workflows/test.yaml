@@ -35,7 +35,7 @@ jobs:
           print '-------------------------'
           print ($env.NU_MODULE_DIRS)
           print '---'
-          print (nu-include-dirs | to text)
+          print (nu-include-dirs)
           print '+++'
           print $workspace
           #cd code; nu -I (nu-include-dirs) $"($workspace)/nu/scripts/github/dispatch.nu"

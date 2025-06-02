@@ -2,6 +2,17 @@ name: test-pr
 
 on:
   workflow_dispatch:
+    inputs:
+      feature:
+        description: Feature
+        required: false
+        type: string
+
+      client:
+        description: Client ID
+        required: false
+        type: string
+
   pull_request:
     types: [edited]
     branches: []
